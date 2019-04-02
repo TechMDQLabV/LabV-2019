@@ -34,6 +34,11 @@ public class Main{
                 .sorted(Comparator.comparing(Event::getId).reversed())
                 .collect(Collectors.toList())));
 
+        System.out.println(String.format("\nEventos, los 5 primeros ordenados alfabeticamente: %s", events.stream()
+                .limit(5)
+                .sorted(Comparator.comparing(Event::getName))
+                .collect(Collectors.toList())));
+
         System.out.println(String.format("\nEventos en ciudades con id mayor a 5: %s", events.stream()
                 .filter(ev -> ev.getLocation().getCity().getId() > 5)
                 .limit(10)
