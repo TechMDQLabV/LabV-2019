@@ -1,16 +1,14 @@
-package controller;
+package utn.primerParcial.primerParcial.controller;
 
 
 import com.sun.istack.internal.NotNull;
-import model.Usuario;
-import org.modelmapper.ModelMapper;
+import utn.primerParcial.primerParcial.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
-import repository.UsuarioRepository;
+import utn.primerParcial.primerParcial.repository.UsuarioRepository;
 
 import java.net.InetSocketAddress;
 import java.util.List;

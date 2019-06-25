@@ -1,22 +1,17 @@
-package controller;
+package utn.primerParcial.primerParcial.controller;
 
 import com.sun.istack.internal.NotNull;
-import model.Comentario;
-import model.Publicacion;
-import model.Usuario;
+import utn.primerParcial.primerParcial.model.Comentario;
+import utn.primerParcial.primerParcial.model.Publicacion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
-import repository.ComentarioRepository;
-import repository.PublicacionRepository;
-import repository.UsuarioRepository;
+import utn.primerParcial.primerParcial.repository.ComentarioRepository;
+import utn.primerParcial.primerParcial.repository.PublicacionRepository;
+import utn.primerParcial.primerParcial.repository.UsuarioRepository;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Properties;
 
 @RequestMapping("/comentarios")
 @RestController
@@ -27,11 +22,6 @@ public class ComentarioController {
     UsuarioRepository usuarioRepository;
     PublicacionRepository publicacionRepository;
     ComentarioRepository comentarioRepository;
-
-    @GetMapping("/all")
-    public List<Comentario> getAll(){
-        return comentarioRepository.findAll();
-    }
 
     @GetMapping("/{id}")
     public Comentario getComentario(@PathVariable("id") Integer id) {
@@ -53,15 +43,4 @@ public class ComentarioController {
         comentarioRepository.save(comentario);
     }
 
-    @Scheduled(fixedDelay = 600000)
-    public void borrarComentariosViejos() {
-        Properties tiempo = new Properties();
-        //tiempo.load("/SimulacroParcial/src/main/resources/application.properties");
-        String t = tiempo.getProperty("tiempo");
-        for (Comentario c : comentarioRepository.findAll()) {
-            if (LocalDateTime.now().compareTo(c.getFecha()) > Integer.valueOf(t)) {
-                comentarioRepository.delete(c);
-            }
-        }
-    }
 }

@@ -1,14 +1,14 @@
-package controller;
+package utn.primerParcial.primerParcial.controller;
 
 import com.sun.istack.internal.NotNull;
-import model.Publicacion;
-import model.Usuario;
+import utn.primerParcial.primerParcial.model.Publicacion;
+import utn.primerParcial.primerParcial.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
-import repository.PublicacionRepository;
-import repository.UsuarioRepository;
+import utn.primerParcial.primerParcial.repository.PublicacionRepository;
+import utn.primerParcial.primerParcial.repository.UsuarioRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
